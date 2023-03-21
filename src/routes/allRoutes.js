@@ -1,8 +1,6 @@
 import React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-
-
 import Login from "../component/auth/Login";
 import Register from "../component/auth/Register";
 import Otp from "../component/auth/Otp";
@@ -10,7 +8,6 @@ import ForgetPassword from "../component/auth/ForgetPassword";
 import NewPassword from "../component/auth/NewPassword";
 import RequireAuth from "../component/auth/RequiredAuth";
 import SideBar from "../component/sidebar/SideBar";
-import Profile from "../Pages/Profile/Profile";
 
 
 const AllRoutes = () => {

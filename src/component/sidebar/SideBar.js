@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import logoImage from "../../assest/svg/logo.svg";
 import userImage from "../../assest/images/userdefault.jpg";
 
@@ -16,12 +16,12 @@ import {
 } from "../../Pages/Profile/profileSlice";
 
 
-import SelectWhoYouAre from "../../Pages/Dashboard/SelectWhoYouAre";
+import Dashboard from "../../Pages/Dashboard/Dashboard";
 
 const SideBar = () => {
   const dispatch = useDispatch();
   const profileDetails = useProfileDetails();
- 
+
 
   const navigate = useNavigate();
   const { user } = useUser();
@@ -40,14 +40,14 @@ const SideBar = () => {
   }, []);
 
   useEffect(() => {
-    if (token == null) return navigate("../auth/login");
+    if (token == null) return navigate("/");
   }, []);
 
   const handleLogout = () => {
     dispatch(removeToken());
     localStorage.clear();
     toast.success(`LOGOUT SUCCESSFULLY.`);
-   
+
   };
 
   const removeId = () => {
@@ -107,7 +107,7 @@ const SideBar = () => {
             className="px-3.5 max-[550px]:px-2 menu-toggle min-[769px]:hidden"
             // onMouseOver={() => Onhover()}
             onMouseOut={() => Outhover()}
-            onClick={() => {toggleSidebar();}}
+            onClick={() => { toggleSidebar(); }}
           >
             <svg
               version="1.0"
@@ -129,7 +129,7 @@ const SideBar = () => {
               </g>
             </svg>
           </button>
-     
+
           <div className="w-72 max-[768px]:w-50 max-[550px]:w-40 max-[400px]:w-32 relative bg-brightGray rounded-md flex items-center">
             <input
               type="text"
@@ -171,14 +171,14 @@ const SideBar = () => {
                   <div className="profile-dropdown border-[#eee] border rounded bg-white relative px-2.5 py-[15px]">
                     <div
                       onClick={() => {
-                        navigate("/profile");
+                        navigate("../profile");
                       }}
                       // to="profile"
                       className="text-xs flex items-center hover:text-spiroDiscoBall cursor-pointer mb-4"
                     >
                       <i className="w-6 block text-center text-lg icon-user mr-4"></i>
                       <span className="font-bold font-primary leading-4">
-                        VIEW PROFILE
+                        View Profile
                       </span>
                     </div>
                     <div
@@ -189,7 +189,7 @@ const SideBar = () => {
                     >
                       <i className="w-6 block text-center text-lg icon-logout mr-4"></i>
                       <span className="font-bold font-primary leading-4">
-                      SIGN OUT
+                        Sign Out
                       </span>
                     </div>
                   </div>
@@ -198,22 +198,14 @@ const SideBar = () => {
             </div>
           </div>
         </div>
-      
+
         {/* <!-- Content In --> */}
         <div className="rightInContent max-[768px]:ml-[0]">
           <Routes>
-            <Route path="/">
-              <Route index element={<SelectWhoYouAre />} />
-             
+            <Route path="dashboard">
+              <Route index element={<Dashboard />} />
             </Route>
-
-            {/* Side bar links */}
             <Route path="profile" element={<Profile />} />
-
-
-          
-           
-  
           </Routes>
         </div>
       </div>

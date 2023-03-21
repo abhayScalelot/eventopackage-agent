@@ -4,10 +4,8 @@ import { toast } from "react-toastify";
 import previewImage from "../../assest/images/image-preview.png";
 import { useDispatch } from "react-redux";
 import { addProfileDetails, addProfileImage } from "./profileSlice";
-import { useIntl } from "react-intl";
 
 const PersonalProfile = ({ details, getProfile }, ref) => {
-  const intl = useIntl();
   const dispatch = useDispatch();
   const [isDisable, setIsDisable] = useState(true);
   const [profileImage, setProfileImage] = useState(null);
@@ -52,9 +50,9 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
       initialRender = false;
     } else {
       if (!isDisable) {
-        toast.info(`${intl.formatMessage({ id: "EDIT PROFILE ENABLE." })}`);
+        toast.info("Edit Profile Enable.");
       } else {
-        toast.info(`${intl.formatMessage({ id: "EDIT PROFILE DISABLE." })}`);
+        toast.info("Edit Profile Disable.");
       }
     }
   }, [isDisable]);
@@ -71,7 +69,7 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(`${intl.formatMessage({ id: "SOMETHING WENT WRONG." })}`);
+      toast.error("Something Went Wrong.");
     }
   };
 
@@ -88,7 +86,7 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(`${intl.formatMessage({ id: "SOMETHING WENT WRONG." })}`);
+      toast.error("Something Went Wrong.");
     }
   };
 
@@ -102,14 +100,14 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
           setProfileImage(selected);
           addProfilePic(selected);
         } else {
-          toast.warn(`${intl.formatMessage({ id: "FILE SIZE IS GREATER THAN 1MB" })}`);
+          toast.warn("File Size is Greater Than 1MB");
         }
       } else {
-        toast.warn(`${intl.formatMessage({ id: "PLEASE SELECT IMAGE FILE WITH JPEG/PNG." })}`);
+        toast.warn("Please Select Image File With JPEG/PNG.");
       }
     } catch (error) {
       console.log(error);
-      toast.error(`${intl.formatMessage({ id: "ERROR WHILE SELECTING IMAGE." })}`);
+      toast.error("Error While Selecting Image.");
     }
   };
   // console.log('details for personal', details);
@@ -117,13 +115,13 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
     <>
       {/* <!-- title-holder  --> */}
       <div className="flex justify-between items-center pt-4">
-        <h1>{intl.formatMessage({ id: "PERSONAL PROFILE" })}</h1>
+        <h1>Personal Profile</h1>
         {isDisable && (
           <button
             className="btn-primary small"
             onClick={() => setIsDisable(false)}
           >
-            {intl.formatMessage({ id: "EDIT PROFILE" })}
+            Edit Profile
           </button>
         )}
         {!isDisable && (
@@ -135,13 +133,13 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
                 setIsDisable(true);
               }}
             >
-              {intl.formatMessage({ id: "SAVE" })}
+              Save
             </button>
             <button
               className="btn-primary small"
               onClick={() => setIsDisable(true)}
             >
-              {intl.formatMessage({ id: "CANCEL" })}
+              Cancel
             </button>
           </div>
         )}
@@ -183,7 +181,7 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
       <div className="">
         <div className="flex justify-between space-x-5 max-[600px]:space-x-0 -mx-2 max-[600px]:flex-col">
           <div className="w-full md:w-1/2 px-2 inputHolder">
-            <span className="input-titel">{intl.formatMessage({ id: "NAME" })}</span>
+            <span className="input-titel">Name</span>
             <input
               type="text"
               className="input font-bold"
@@ -194,7 +192,7 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
             />
           </div>
           <div className="w-full md:w-1/2 px-2 inputHolder max-[600px]:pt-3">
-            <span className="input-titel">{intl.formatMessage({ id: "EMAIL" })}</span>
+            <span className="input-titel">Email</span>
             <input
               type="text"
               className="input font-bold"
@@ -207,7 +205,7 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
         </div>
         <div className="flex justify-between space-x-5 max-[600px]:space-x-0 pt-3 -mx-2 max-[600px]:flex-col">
           <div className="w-1/2 px-2 max-[600px]:w-full">
-            <span className="input-titel">{intl.formatMessage({ id: "PHONE NUMBER" })}</span>
+            <span className="input-titel">Phone Number</span>
             <div className="flex items-center h-auto space-x-3 mt-1">
               <div className="">
                 {/* <select className="text-base text-japaneseIndigo bg-white rounded-md flex space-x-3 profile-arrow outline-0 whitespace-nowrap pl-5 pr-10 py-3.5 relative w-28">
@@ -235,7 +233,7 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
             </div>
           </div>
           <div className="w-full md:w-1/2 px-2 inputHolder max-[600px]:pt-3">
-            <span className="input-titel">{intl.formatMessage({ id: "ADDRESS" })}</span>
+            <span className="input-titel">Address</span>
             <input
               type="text"
               className="input font-bold"
@@ -248,7 +246,7 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
         </div>
         <div className="flex justify-between space-x-5 max-[600px]:space-x-0 pt-3 -mx-2 max-[600px]:flex-col">
           <div className="w-full md:w-1/2 px-2 inputHolder">
-            <span className="input-titel">{intl.formatMessage({ id: "DATE OF BIRTH" })}</span>
+            <span className="input-titel">Date of Birth</span>
             <input
               type="text"
               className="input font-bold"
@@ -260,7 +258,7 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
             />
           </div>
           <div className="w-full md:w-1/2 px-2 inputHolder max-[600px]:pt-3">
-            <span className="input-titel">{intl.formatMessage({ id: "COUNTRY" })}</span>
+            <span className="input-titel">Country</span>
             <input
               type="text"
               className="input font-bold"
@@ -272,7 +270,7 @@ const PersonalProfile = ({ details, getProfile }, ref) => {
           </div>
         </div>
         <div className="w-full pt-3">
-          <span className="input-titel">{intl.formatMessage({ id: "ABOUT ME" })}</span>
+          <span className="input-titel">About ME</span>
           <textarea
             name="about"
             id=""
