@@ -16,7 +16,7 @@ const Login = () => {
   // console.log(token);
 
   useEffect(() => {
-    if (token != null) return navigate("../../dashboard");
+    if (token != null) return navigate("../../organizers");
   }, [token]);
 
   const [userData, setUserData] = useState({ mobile: "", password: "" });
@@ -35,7 +35,7 @@ const Login = () => {
       if (response.data?.IsSuccess) {
         toast.success(response.data?.Message);
         setError(false);
-        navigate("/dashboard");
+        navigate("/organizers");
       } else {
         toast.error(response.data?.Message);
       }

@@ -84,7 +84,7 @@ const Register = (props) => {
         <BgImage />
         <div className="w-full h-full relative lg:w-1/2 flex px-4 overflow-y-auto py-5">
           <div className="max-w-md w-full m-auto">
-            <h1>Create an Account</h1>
+            <h1>Create an Agent Account</h1>
             <p className="sm:text-lg xl:text-xl text-quicksilver font-normal sm:pt-3.5">
               Let’s get you all set up you can verify your personal account and
               login setting up your profile
@@ -190,56 +190,12 @@ const Register = (props) => {
                         />
                       </div>
                     </div>
-                    <div className="relative">
-                      <label htmlFor="" className="input-titel">
-                        Refer Code
-                      </label>
-                      <Field
-                        type="text"
-                        name="refer_code"
-                        className="input_box"
-                        value={formik?.values.refer_code}
-                      />
-                      <span className="text-quicksilver text-sm font-light absolute right-0 top-0">
-                        (Optional)
-                      </span>
-                    </div>
                     <button
                       type="submit"
                       className="btn-primary w-full py-[15px] uppercase"
                     >
                       Register Now
                     </button>
-                    {/* <div type="button" className="relative py-5">
-                      <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 w-full h-[1px] bg-brightGray"></span>
-                      <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-max p-2 bg-white">
-                        or
-                      </span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <button
-                        type="button"
-                        className="btn p-3 relative w-[48%] font-bold text-base text-japaneseIndigo border-2 border-[#D3DCEA] rounded"
-                      >
-                        <img
-                          src={googlelogo}
-                          className="absolute top-1/2 left-3.5 -translate-y-1/2"
-                          alt="google"
-                        />
-                        Google
-                      </button>
-                      <button
-                        type="button"
-                        className="btn p-3 relative w-[48%] font-bold text-base text-japaneseIndigo border-2 border-[#D3DCEA] rounded"
-                      >
-                        <img
-                          src={facebooklogo}
-                          className="absolute top-1/2 left-3.5 -translate-y-1/2 w-4"
-                          alt="google"
-                        />
-                        Facebook
-                      </button>
-                    </div> */}
                     <span className="block text-sm text-japaneseIndigo font-bold text-center">
                       Have an account? <Link to="/">Login in</Link>
                     </span>

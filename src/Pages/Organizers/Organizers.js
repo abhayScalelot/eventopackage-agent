@@ -5,8 +5,6 @@ const Dashboard = () => {
 
  const agentId = useSelector(state => state.auth.user.agentid);
 
- console.log("agentIdagentIdagentId",agentId);
-
   return (
     <div className="wrapper">
       <div className="flex justify-between items-center pt-4" >
@@ -14,7 +12,7 @@ const Dashboard = () => {
 
         <button
           className="btn-primary small">
-          <a href={`https://eventopackage.com/auth/register?${agentId}`} target={"_blank"}>
+          <a href={`https://eventopackage.com/auth/register?agent_id=${agentId}`} target={"_blank"}>
           Add Organizer</a>
         </button>
       </div>

@@ -16,7 +16,7 @@ import {
 } from "../../Pages/Profile/profileSlice";
 
 
-import Dashboard from "../../Pages/Dashboard/Dashboard";
+import Organizers from "../../Pages/Organizers/Organizers";
 
 const SideBar = () => {
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const SideBar = () => {
   const handleLogout = () => {
     dispatch(removeToken());
     localStorage.clear();
-    toast.success(`LOGOUT SUCCESSFULLY.`);
+    toast.success(`Logout Successfully.`);
 
   };
 
@@ -85,15 +85,15 @@ const SideBar = () => {
         </div>
         <div className="nav">
           <NavLink
-            to="../dashboard"
+            to="../organizers"
             activeclassname="active"
-            title="Organizer"
+            title="Organizers"
             onClick={removeId}
           >
             <span>
               <i className="w-6 block text-center text-lg icon-deshbord"></i>
             </span>
-            <span>Organizer</span>
+            <span>Organizers</span>
           </NavLink>
 
         </div>
@@ -202,8 +202,8 @@ const SideBar = () => {
         {/* <!-- Content In --> */}
         <div className="rightInContent max-[768px]:ml-[0]">
           <Routes>
-            <Route path="dashboard">
-              <Route index element={<Dashboard />} />
+            <Route path="organizers">
+              <Route index element={<Organizers />} />
             </Route>
             <Route path="profile" element={<Profile />} />
           </Routes>
