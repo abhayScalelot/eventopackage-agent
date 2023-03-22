@@ -8,12 +8,17 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { toast, ToastContainer } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { registration } from "./authSlice";
+import EventPopUpTermsAndConditionsPopUp from "./EventPopUpTermsAndConditionsPopUp";
+import Modal from "./Modal";
 
 const Register = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isCheck, setIsCheck] = useState(false)
   const [isVisible, setIsVisible] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isTermsAndConditionPopUpOpen, setIsTermsAndConditionPopUpOpen] =
+    useState(false);
   const initialState = {
     name: "",
     email: "",
@@ -53,6 +58,10 @@ const Register = (props) => {
     // console.log(values);
     if (values.password !== values.password2) {
       toast.warn("confirm password and password is not matching");
+      return;
+    }
+    if (!isCheck) {
+     alert("PLEACE ACCEPT THE TERMS AND CONDITION");
       return;
     }
     try {
@@ -190,6 +199,33 @@ const Register = (props) => {
                         />
                       </div>
                     </div>
+                    <div className="flex items-end">
+                      <label className="checkbox rounded bg-white">
+                        <input
+                          type="checkbox"
+                          checked={isCheck ? true : false}
+                          onClick={() => {
+                            if (isCheck === true) {
+                              setIsTermsAndConditionPopUpOpen(false)
+                              setIsCheck(false)
+                            }
+                            else {
+                              setIsTermsAndConditionPopUpOpen(true)
+                            }
+                          }
+                          }
+                        />
+                        <i className="icon-right"></i>
+                      </label>
+                      <span className="input-titel text-base ml-4">By continuing, I agree to the <button>terms and conditions.</button>
+                      </span>
+                    </div>
+                    {/* <button
+                      className="btn-primary w-full"
+                      // onClick={() => saveData()}
+                    >
+                      {intl.formatMessage({ id: "SAVE" })}
+                    </button> */}
                     <button
                       type="submit"
                       className="btn-primary w-full py-[15px] uppercase"
@@ -218,6 +254,13 @@ const Register = (props) => {
         pauseOnHover
         theme="colored"
       />
+      <Modal isOpen={isTermsAndConditionPopUpOpen}>
+          <EventPopUpTermsAndConditionsPopUp
+            handleClose={setIsTermsAndConditionPopUpOpen}
+           
+            setIsCheck={setIsCheck}
+          />
+        </Modal>
     </div>
   );
 };

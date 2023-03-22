@@ -26,7 +26,7 @@ const Dashboard = () => {
       limit: limit,
     }
     try {
-      console.log("headerheader",header);
+      console.log("headerheader", header);
       const response = await axios.post(`${baseUrl}/agent/organisers`, requestObj, { headers: header });
       setOrganizers(response.data.Data.docs);
     } catch (error) {
@@ -42,35 +42,35 @@ const Dashboard = () => {
 
 
   const columns = [
-		{ field: 'name', header: ' Organizer Name' },
-		{ field: `email`, header: 'Email' },
-		{ field: 'mobile', header: 'Phone Number' },
-		{ field: 'address', header: 'Address' },
-		{ field: 'mobileverified', header: 'Mobile Verified' },
-		{ field: 'is_approved', header: 'Is Approved' },
-		{ field: 'status', header: 'Status' },
-	];
+    { field: 'name', header: ' Organizer Name' },
+    { field: `email`, header: 'Email' },
+    { field: 'mobile', header: 'Phone Number' },
+    { field: 'address', header: 'Address' },
+    { field: 'mobileverified', header: 'Mobile Verified' },
+    { field: 'is_approved', header: 'Is Approved' },
+    { field: 'status', header: 'Status' },
+  ];
 
 
   return (
     <div className="wrapper">
       <div className="flex justify-between items-center pt-4 mb-5" >
         <h1>Organizer List</h1>
-
-        <button
-          className="btn-primary small">
-          <a href={`https://eventopackage.com/auth/register?agent_id=${agentId}`} target={"_blank"}>
-            Add Organizer</a>
-        </button>
+        <a href={`https://eventopackage.com/auth/register?agent_id=${agentId}`} target={"_blank"}>
+          <button
+            className="btn-primary small">
+            Add Organizer
+          </button>
+        </a>
       </div>
 
       <DataTable value={organizers}>
-					{columns.map((col, i) => (
+        {columns.map((col, i) => (
 
-						<Column key={col.field} field={col.field} header={col.header} />
+          <Column key={col.field} field={col.field} header={col.header} />
 
-					))}
-				</DataTable>
+        ))}
+      </DataTable>
 
     </div>
 
