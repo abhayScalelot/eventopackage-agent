@@ -1,19 +1,19 @@
 /* AUTH */
-export const LOGIN = "/organizer/login";
+export const LOGIN = "/agent/login";
 export const LOGOUT = "/api/logout";
-export const FORGET_PASSWORD = "/organizer/register/forgotpassword";
-export const NEW_PASSWORD = "/organizer/register/changepassword";
-export const OTP = "/organizer/register/verifyotp";
+export const FORGET_PASSWORD = "/agent/register/forgotpassword";
+export const NEW_PASSWORD = "/agent/register/changepassword";
+export const OTP = "/agent/register/verifyotp";
 export const RESEND_OTP = "/api/sendotp";
-export const REGISTER = "/organizer/register";
+export const REGISTER = "/agent/register";
 
 /* LANDING PAGE */
 
 export const GET_IN_TOUCH = "/landing/getintouch";
 
 /* PROFILE */
-export const PROFILE = "/organizer/profile";
-export const PROFILE_PIC = "/organizer/profile/profilepic";
+export const PROFILE = "/agent/profile";
+export const PROFILE_PIC = "/agent/profile/profilepic";
 export const BUSINESS_PROFILE = "/organizer/profile/businessprofile";
 export const BUSINESS_PROFILE_PIC = "/organizer/profile/businessprofilepic";
 

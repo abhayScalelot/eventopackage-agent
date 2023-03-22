@@ -1,12 +1,25 @@
-import React from 'react'
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
 
+ const agentId = useSelector(state => state.auth.user.agentid);
+
+ console.log("agentIdagentIdagentId",agentId);
+
   return (
     <div className="wrapper">
-      <h1>Organizer</h1>
+      <div className="flex justify-between items-center pt-4" >
+        <h1>Organizer List</h1>
 
+        <button
+          className="btn-primary small">
+          <a href={`https://eventopackage.com/auth/register?${agentId}`} target={"_blank"}>
+          Add Organizer</a>
+        </button>
+      </div>
     </div>
+
   )
 }
 

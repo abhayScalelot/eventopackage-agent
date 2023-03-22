@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PersonalProfile from "./PersonalProfile";
-import BusinessProfile from "./BusinessProfile";
+
 import { useDispatch } from "react-redux";
 import { useProfileDetails, getProfileDetails } from "./profileSlice";
 import { MoonLoader } from 'react-spinners';
@@ -41,11 +41,8 @@ const Profile = () => {
             <PersonalProfile details={profileDetails} getProfile={getProfile} />
             {/* <Advertisement /> */}
 
-            {/* <!-- profile 2 --> */}
-            <BusinessProfile
-              business={profileDetails?.businessProfile}
-              getProfile={getProfile}
-            />
+          
+            
           </>
         }
       </div>

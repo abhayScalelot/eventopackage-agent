@@ -5,24 +5,24 @@ import { useDispatch } from "react-redux";
 import { forgotPassword } from "./authSlice";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useIntl } from "react-intl";
+
 import { toast, ToastContainer } from "react-toastify";
 
 
 const ForgetPassword = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const intl = useIntl();
+
 
 
 
   const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const ValidationSchema = Yup.object().shape({
     mobile: Yup.string()
-      .matches(phoneRegExp, `${intl.formatMessage({ id: "PHONE NUMBER IS NOT VALID" })}`)
-      .required(`${intl.formatMessage({ id: "PHONE NO IS REQUIRED" })}`)
-      .min(10, `${intl.formatMessage({ id: "PHONE NO IS 10 DIGIT REQUIRED" })}`)
-      .max(10, `${intl.formatMessage({ id: "PHONE NO IS 10 DIGIT REQUIRED" })}`)
+      .matches(phoneRegExp, `PHONE NUMBER IS NOT VALID`)
+      .required(`PHONE NO IS REQUIRED`)
+      .min(10, `PHONE NO IS 10 DIGIT REQUIRED`)
+      .max(10, `PHONE NO IS 10 DIGIT REQUIRED`)
   });
 
   const initialState = {
@@ -47,7 +47,7 @@ const ForgetPassword = () => {
         }
       }
     } catch (error) {
-      toast.error(`${intl.formatMessage({ id: "INVALID ORGANIZER MOBILE NUMBER, PLEASE TRY AGAIN..." })}`);
+      toast.error(`INVALID ORGANIZER MOBILE NUMBER, PLEASE TRY AGAIN...`);
       console.log(error);
     }
   };
