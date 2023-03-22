@@ -56,12 +56,11 @@ const Dashboard = () => {
     <div className="wrapper">
       <div className="flex justify-between items-center pt-4 mb-5" >
         <h1>Organizer List</h1>
-        <a href={`https://eventopackage.com/auth/register?agent_id=${agentId}`} target={"_blank"}>
-          <button
-            className="btn-primary small">
+        <button
+          onClick={() => window.open(`https://eventopackage.com/auth/register?agent_id=${agentId}`, '_blank')}
+          className="btn-primary small">
             Add Organizer
-          </button>
-        </a>
+        </button>
       </div>
 
       <DataTable value={organizers}>
