@@ -135,7 +135,7 @@ const SideBar = () => {
               type="text"
               name=""
               id=""
-              placeholder={`SEARCH`}
+              placeholder={`Search`}
               className="w-full h-10 bg-transparent text-sm font-bold pl-3.5 focus:outline-none"
             />
             <button type="submit" className="p-3.5">
