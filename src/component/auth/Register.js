@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import googlelogo from "../../assest/images/landing-page/google.png";
 import facebooklogo from "../../assest/images/landing-page/facebook.png";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import BgImage from "./BgImage";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -19,6 +19,8 @@ const Register = (props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isTermsAndConditionPopUpOpen, setIsTermsAndConditionPopUpOpen] =
     useState(false);
+  const params = useSearchParams()
+  console.log('params', params)
   const initialState = {
     name: "",
     email: "",
@@ -61,7 +63,7 @@ const Register = (props) => {
       return;
     }
     if (!isCheck) {
-     alert("PLEACE ACCEPT THE TERMS AND CONDITION");
+      alert("PLEACE ACCEPT THE TERMS AND CONDITION");
       return;
     }
     try {
@@ -255,12 +257,12 @@ const Register = (props) => {
         theme="colored"
       />
       <Modal isOpen={isTermsAndConditionPopUpOpen}>
-          <EventPopUpTermsAndConditionsPopUp
-            handleClose={setIsTermsAndConditionPopUpOpen}
-           
-            setIsCheck={setIsCheck}
-          />
-        </Modal>
+        <EventPopUpTermsAndConditionsPopUp
+          handleClose={setIsTermsAndConditionPopUpOpen}
+
+          setIsCheck={setIsCheck}
+        />
+      </Modal>
     </div>
   );
 };

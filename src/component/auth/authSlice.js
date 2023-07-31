@@ -43,6 +43,7 @@ export const newPassword = createAsyncThunk(
 );
 
 export const otpVerify = createAsyncThunk("auth/otp", async (payload) => {
+  console.log('payload', payload)
   return await otp(payload);
 });
 
@@ -97,6 +98,7 @@ export const selectUser = (state) => state.auth.user;
 
 export const useUser = () => {
   const user = useSelector(selectUser);
+  console.log('user', user)
   localStorage.setItem("user", user ? JSON.stringify(user) : undefined);
   return useMemo(() => ({ user }), [user]);
 };

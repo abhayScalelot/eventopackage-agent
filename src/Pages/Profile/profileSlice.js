@@ -9,8 +9,9 @@ import {
   profile,
 } from "../../redux/services/profileServices";
 
-const getProfileDetail = () => {
+export const getProfileDetail = () => {
   let profileDetails = localStorage.getItem("Profile");
+
   if (profileDetails && profileDetails !== "undefined") {
     return JSON.parse(profileDetails);
   } else {

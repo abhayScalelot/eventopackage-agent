@@ -66,11 +66,13 @@ const Otp = () => {
       otpValue[4] +
       otpValue[5];
     console.log(fullOtp);
+    console.log('fullOtp', fullOtp)
 
     const payload = {
       mobile: username,
       key: key,
       otp: fullOtp,
+
     };
     try {
       if (fullOtp != "000000") {

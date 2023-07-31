@@ -17,7 +17,6 @@ const AllRoutes = () => {
         <Route path="/">
         
             <Route index element={<Login />} />
-          
             <Route path="register" element={<Register />} />
             <Route path="verify/:username/:flag" element={<Otp />} />
             <Route path="forgot-password" element={<ForgetPassword />} />
