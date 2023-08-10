@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
 import googlelogo from "../../assest/images/landing-page/google.png";
 import facebooklogo from "../../assest/images/landing-page/facebook.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import BgImage from "./BgImage";
 import { useDispatch } from "react-redux";
 import { logInUser, useUser } from "./authSlice";
+import { getProfileDetail } from "../../Pages/Profile/profileSlice";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const { user } = useUser();
-  const token = user.token || null;
+  // const token = user.token || null;
   // console.log(token);
 
-  useEffect(() => {
-    if (token != null) return navigate("../../organizers");
-  }, [token]);
+  // useEffect(() => {
+  //   // if (token != null) return navigate("../../organizers");
+  // }, [token]);
 
   const [userData, setUserData] = useState({ mobile: "", password: "" });
   const [error, setError] = useState(false);
@@ -28,21 +29,27 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
       let payload = Object.assign({}, userData);
-      let response = await dispatch(logInUser(payload)).unwrap();
-      if (response.data?.IsSuccess) {
-        toast.success(response.data?.Message);
-        setError(false);
-        navigate("/organizers");
+      let response = await dispatch(logInUser(payload))
+      console.log('response', response)
+      if (response?.payload?.data?.IsSuccess) {
+        if (response?.payload?.data?.Data?.key) {
+          console.log("Key Maylii")
+          navigate(`../verify/${userData.mobile}/${true})}`);
+        } else if (response?.payload?.data?.Data?.token) {
+          console.log("Token Mayluu")
+          navigate("/organizers");
+          toast.success(response?.payload?.data?.Message);
+          setError(false);
+        }
       } else {
         toast.error(response.data?.Message);
       }
     } catch (error) {
-			toast.error('Username or Password Incorrect');
-			setError(true);
-		}
+      toast.error('Username or Password Incorrect');
+      setError(true);
+    }
   };
 
   return (
@@ -138,7 +145,7 @@ const Login = () => {
                   </button>
                 </div> */}
                 <span className="block text-sm text-japaneseIndigo font-bold text-center">
-                Don’t have an account? <Link to="../register">Sign up</Link>
+                  Don’t have an account? <Link to="../register">Sign up</Link>
                 </span>
               </form>
             </div>

@@ -98,7 +98,7 @@ export const selectUser = (state) => state.auth.user;
 
 export const useUser = () => {
   const user = useSelector(selectUser);
-  console.log('user', user)
+  // console.log('user', user)
   localStorage.setItem("user", user ? JSON.stringify(user) : undefined);
   return useMemo(() => ({ user }), [user]);
 };

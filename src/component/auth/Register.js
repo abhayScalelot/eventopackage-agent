@@ -46,14 +46,10 @@ const Register = (props) => {
       .required("Phone no is required"),
     password: Yup.string()
       .min(8, "Too Short!")
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        `Make sure your password is of 8 characters, 5 alphabets, 2 number and 1 symbol.`
-      )
       .required("Password is required*"),
     password2: Yup.string()
       .min(6, "Too Short!")
-      .required("Password is required*"),
+      .required("Password is required*").oneOf([Yup.ref('password'), null], 'Passwords must match'),
   });
 
   const clickSubmitHandler = async (values) => {
@@ -63,7 +59,7 @@ const Register = (props) => {
       return;
     }
     if (!isCheck) {
-      alert("PLEACE ACCEPT THE TERMS AND CONDITION");
+      // alert("PLEACE ACCEPT THE TERMS AND CONDITION");
       return;
     }
     try {
@@ -202,24 +198,27 @@ const Register = (props) => {
                       </div>
                     </div>
                     <div className="flex items-end">
-                      <label className="checkbox rounded bg-white">
+                      <label className="checkbox cursor-pointer rounded bg-white">
                         <input
                           type="checkbox"
                           checked={isCheck ? true : false}
                           onClick={() => {
-                            if (isCheck === true) {
-                              setIsTermsAndConditionPopUpOpen(false)
-                              setIsCheck(false)
-                            }
-                            else {
-                              setIsTermsAndConditionPopUpOpen(true)
-                            }
+                            // if (isCheck === true) {
+                            //   setIsCheck(tr)
+                            // }
+                            // else {
+                            //   setIsTermsAndConditionPopUpOpen(false)
+                            // }
+                            setIsCheck(!isCheck)
                           }
                           }
                         />
                         <i className="icon-right"></i>
                       </label>
-                      <span className="input-titel text-base ml-4">By continuing, I agree to the <button>terms and conditions.</button>
+                      <span className="input-titel text-base ml-4">By continuing, I agree to the <button className="text-[#20c0e8]" onClick={() => {
+                        // setIsCheck(false);
+                        setIsTermsAndConditionPopUpOpen(true)
+                      }}>terms and conditions.</button>
                       </span>
                     </div>
                     {/* <button
@@ -231,6 +230,7 @@ const Register = (props) => {
                     <button
                       type="submit"
                       className="btn-primary w-full py-[15px] uppercase"
+                      disabled={true}
                     >
                       Register Now
                     </button>
@@ -263,7 +263,7 @@ const Register = (props) => {
           setIsCheck={setIsCheck}
         />
       </Modal>
-    </div>
+    </div >
   );
 };
 
